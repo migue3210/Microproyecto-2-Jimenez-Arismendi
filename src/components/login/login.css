@@ -1,0 +1,92 @@
+.Login {
+    display: flex;
+    height: 100vh;
+    background-color: #f4f4f4;
+  }
+  
+  .left-half {
+    width: 50%;
+    background-color: #1F66B9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .login-container {
+    width: 600px;
+    padding: 20px;
+    text-align: left;
+    margin-left: 90px;
+    margin-top: 70px;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  form {
+    width: 600px;
+    position: absolute;
+    left: 800px;
+    top: 200px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 50px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  .welcome {
+    color: #000; 
+    font-size: 50px; 
+    margin-top: 20px; 
+    position: absolute;
+    left: 250px;
+    top: 200px;
+  }
+  
+  .Game {
+    color: #000; 
+    font-size: 50px; 
+    margin-top: 20px; 
+    position: absolute;
+    left: 260px;
+    top: 400px;
+  }
+
+  .fondo-imagen {
+    margin-top: 20px; 
+    position: absolute;
+    left: 320px;
+    top: 280px;
+  }
+
+  input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 6px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
