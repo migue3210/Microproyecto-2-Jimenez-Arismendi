@@ -1,10 +1,10 @@
 import './App.css'
-import Landing from './components/landing/landing'
+import Header from './components/header/header'
 
 function App() {
   return (
     <>
-      <Landing></Landing>
+      <Header></Header>
     </>
   )
 }
