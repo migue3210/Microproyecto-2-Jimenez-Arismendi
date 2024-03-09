@@ -1,25 +1,27 @@
 import './login.css'
 import React, { useState } from 'react';
 import imagenFondo from '../../assets/icons8-gameboy-96.png';
+import { auth } from '/Users/Luis Gustavo/Desktop/Microproyecto-2-Jimenez-Arismendi/src/services/firebase';
+import {signInWithEmailAndPassword} from 'firebase/auth';
+
+
 
 export default function Login () {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
   
-    const handleEmailChange = (e) => {
-      setEmail(e.target.value);
-    };
-  
-    const handlePasswordChange = (e) => {
-      setPassword(e.target.value);
-    };
-  
-    const handleSubmit = (e) => {
+    const signIn = (e) => {
       e.preventDefault();
-      // Aquí podrías agregar la lógica de autenticación si fuera necesario
-      console.log('Correo electrónico:', email);
-      console.log('Contraseña:', password);
-    };
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          console.log(userCredential);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+
+    
   
     return (
       <div className="Login">
@@ -30,13 +32,13 @@ export default function Login () {
             <p className="welcome">Welcome to</p>
             <img src={imagenFondo} alt="Fondo" className="fondo-imagen" />
             <p className="Game">GameClub</p>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={signIn}>
             <label>
               Correo Electrónico:
               <input
                 type="email"
                 value={email}
-                onChange={handleEmailChange}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </label>
             <br />
@@ -45,7 +47,7 @@ export default function Login () {
               <input
                 type="password"
                 value={password}
-                onChange={handlePasswordChange}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </label>
             <br />
