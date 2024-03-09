@@ -53,41 +53,50 @@ export default function Register () {
             <p className="welcome">Welcome to</p>
             <img src={imagenFondo} alt="Fondo" className="fondo-imagen" />
             <p className="Game">GameClub</p>
+
           <form onSubmit={signUp}>
-            <label>
-                Nombre:
+            <label className='name'>
+                Nombre
+            </label>
                 <input
                 type="name"
+                className='input-name'
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 />
+            
+            <label className='apellido'>
+                Apellido
             </label>
-            <label>
-                Apellido:
                 <input
                 type="apellido"
+                className='input-apellido'
                 value={apellido}
                 onChange={(e) => setApellido(e.target.value)}
                 />
+            
+            <label className='usuario'>
+                Nombre de usuario
             </label>
-            <label>
-                Nombre de usuario:
                 <input
                 type="usuario"
+                className='input-usuario'
                 value={usuario}
                 onChange={(e) => setUsuario(e.target.value)}
                 />
+            
+            <label className='game'>
+                Juego favorito
             </label>
-            <label>
-                Juego favorito:
                 <input
                 type="game"
+                className='input-game'
                 value={game}
                 onChange={(e) => setGame(e.target.value)}
                 />
-            </label>
-            <label>
-              Correo Electrónico:
+            
+            <label className='input-email'>
+              Correo Electrónico
               <input
                 type="email"
                 value={email}
@@ -95,8 +104,8 @@ export default function Register () {
               />
             </label>
             <br />
-            <label>
-              Contraseña:
+            <label className='input-password'>
+              Contraseña
               <input
                 type="password"
                 value={password}
@@ -104,7 +113,13 @@ export default function Register () {
               />
             </label>
             <br />
-            <button type="submit">Registrarse</button>
+            <button type="submit" className='button-register'>Registrarse</button>
+
+            <label className='signIn'>
+              ¿Ya tienes cuenta?
+            </label>
+            <button className='button-signIn'>Iniciar sesión</button>
+
           </form>
         </div>
       </div>

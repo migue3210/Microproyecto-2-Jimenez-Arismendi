@@ -1,6 +1,8 @@
 import './login.css'
 import React, { useState } from 'react';
 import imagenFondo from '../../assets/icons8-gameboy-96.png';
+import { auth } from '/Users/Luis Gustavo/Desktop/Microproyecto-2-Jimenez-Arismendi/src/services/firebase';
+import {signInWithEmailAndPassword} from 'firebase/auth';
 
 
 
