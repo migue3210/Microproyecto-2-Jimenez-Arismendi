@@ -21,7 +21,7 @@ export default function Landing() {
     return (
         <>
             <Header></Header>
-            <div>
+            <div className='club-list'>
                 {
                     info.map((data) => (
                         // eslint-disable-next-line react/jsx-key
@@ -42,10 +42,11 @@ const ClubCard
     // eslint-disable-next-line react/prop-types
     = ({ name, description, games }) => {
         return (
-            <div>
-                <p>Name : {name}</p>
-                <p>Description : {description}</p>
-                <p>Games : {games}</p>
+            <div className='card-container'>
+                <h3>{name}</h3>
+                <p>{description}</p>
+                <h4 className='games-title'>Juegos</h4>
+                <p>{games}</p>
             </div>
         );
     }
