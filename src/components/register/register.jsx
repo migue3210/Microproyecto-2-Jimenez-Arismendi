@@ -62,10 +62,9 @@ export default function Register() {
     "Hades"
   ];
 
-  const [seleccion, setSeleccion] = useState('');
 
   const handleChange = (e) => {
-    setSeleccion(e.target.value);
+    setGame(e.target.value);
   };
 
 

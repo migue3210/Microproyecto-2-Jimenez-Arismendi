@@ -112,3 +112,15 @@ button:hover {
   top: 350px;
   left: 48px;
 }
+
+.error-message {
+  color: red;
+  margin-top: 5px;
+}
+
+.google{
+  height: 20%;
+  position: absolute;
+  top: 220px;
+  left: 350px;
+}

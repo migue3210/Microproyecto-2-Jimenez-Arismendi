@@ -38,7 +38,7 @@ function App() {
           ></Route>
           <Route
             exact
-            path="/perfil-usuario"
+            path="/perfil"
             element={<User />}
           ></Route>
         </Routes>
