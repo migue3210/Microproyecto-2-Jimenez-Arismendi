@@ -40,7 +40,34 @@ export default function Register() {
   };
 
 
+  const juegos = [
+    "The Witcher 3: Wild Hunt",
+    "Red Dead Redemption 2",
+    "The Legend of Zelda: Breath of the Wild",
+    "Dark Souls III",
+    "Super Mario Odyssey",
+    "Overwatch",
+    "Minecraft",
+    "Fortnite",
+    "FIFA 22",
+    "Call of Duty: Warzone",
+    "Assassin's Creed Valhalla",
+    "Cyberpunk 2077",
+    "Among Us",
+    "Animal Crossing: New Horizons",
+    "League of Legends",
+    "Genshin Impact",
+    "Apex Legends",
+    "World of Warcraft",
+    "Control",
+    "Hades"
+  ];
 
+  const [seleccion, setSeleccion] = useState('');
+
+  const handleChange = (e) => {
+    setSeleccion(e.target.value);
+  };
 
 
 
@@ -88,26 +115,27 @@ export default function Register() {
           <label className='game'>
             Juego favorito
           </label>
-          <input
-            type="game"
-            className='input-game'
-            value={game}
-            onChange={(e) => setGame(e.target.value)}
-          />
+          <select className='select-game' value={seleccion} onChange={handleChange}>
+        {juegos.map((juego, index) => (
+          <option key={index} value={juego}>{juego}</option>
+        ))}
+      </select>
 
-          <label className='input-email'>
+          <label className='email'>
             Correo Electrónico
             <input
               type="email"
+              className='input-email'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </label>
           <br />
-          <label className='input-password'>
+          <label className='password' >
             Contraseña
             <input
               type="password"
+              className='input-password'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />

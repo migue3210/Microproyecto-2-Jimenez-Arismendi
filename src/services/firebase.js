@@ -5,12 +5,13 @@ import { getAuth } from 'firebase/auth';
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBtWVBcxZwndNWoTn46rU4Sq3IOLrVavV8",
-    authDomain: "microproyecto-2-j-a.firebaseapp.com",
-    projectId: "microproyecto-2-j-a",
-    storageBucket: "microproyecto-2-j-a.appspot.com",
-    messagingSenderId: "792480611047",
-    appId: "1:792480611047:web:980d23afa9d473e4830042"
+    apiKey: "AIzaSyB2TaxkGBpzv8MRCcDKB6uKAoG4uVtfvfo",
+    authDomain: "microproyecto-2-a-j.firebaseapp.com",
+    projectId: "microproyecto-2-a-j",
+    storageBucket: "microproyecto-2-a-j.appspot.com",
+    messagingSenderId: "488798011933",
+    appId: "1:488798011933:web:8ac6086e6dc815263fbcf4",
+    measurementId: "G-YB824E1BQ1"
 };
 
 firebase.initializeApp(firebaseConfig);

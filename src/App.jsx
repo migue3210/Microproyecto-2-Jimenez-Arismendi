@@ -8,6 +8,7 @@ import Landing from './components/landing/landing'
 import Login from './components/login/login'
 import Register from './components/register/register'
 import Search from "./components/search/search";
+import User from "./components/user_profile/user";
 
 
 function App() {
@@ -34,6 +35,11 @@ function App() {
             exact
             path="/buscar-juego"
             element={<Search />}
+          ></Route>
+          <Route
+            exact
+            path="/perfil-usuario"
+            element={<User />}
           ></Route>
         </Routes>
       </Router>
