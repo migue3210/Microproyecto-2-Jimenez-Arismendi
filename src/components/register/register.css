@@ -124,7 +124,7 @@ label {
   top: 100px;
 }
 
-.input-game {
+.select-game {
   width: 35%;
   padding: 8px;
   position: absolute;
@@ -136,26 +136,46 @@ label {
   border-radius: 4px;
 }
 
-
-
-.input-email {
-  width: 87%;
+.email{
+  width: 50%;
   padding: 8px;
   position: absolute;
-  top: 170px;
+  top: 180px;
   left: 40px;
   margin-bottom: 6px;
-
 }
 
-.input-password {
+.input-email {
+  width: 125%;
+  padding: 8px;
+  position: absolute;
+  top: 0px;
+  left: 160px;
+  margin-bottom: 6px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.password{
   width: 87%;
   padding: 8px;
   position: absolute;
   top: 240px;
   left: 40px;
   margin-bottom: 6px;
+}
 
+.input-password {
+  width: 81%;
+  padding: 8px;
+  position: absolute;
+  top: 0px;
+  left: 110px;
+  margin-bottom: 6px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 
 
@@ -163,7 +183,7 @@ label {
   color: #69727c;
   font: 10px;
   position: absolute;
-  top: 400px;
+  top: 380px;
   left: 48px;
 }
 
@@ -176,7 +196,7 @@ label {
   cursor: pointer;
   font-size: 16px;
   position: absolute;
-  top: 330px;
+  top: 310px;
   left: 48px;
 }
 
@@ -193,6 +213,6 @@ button:hover {
   cursor: pointer;
   font-size: 16px;
   position: absolute;
-  top: 430px;
+  top: 410px;
   left: 48px;
 }
