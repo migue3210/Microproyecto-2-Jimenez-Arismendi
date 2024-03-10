@@ -27,13 +27,8 @@ h1 {
     margin: 0px;
 }
 
-li {
-    list-style-type: none;
+.link {
     margin: 0 20px;
-
-}
-
-a.link {
     background-image: linear-gradient(to right,
             #303030,
             #303030 50%,
@@ -48,7 +43,7 @@ a.link {
     transition: all 0.3s ease-in-out;
 }
 
-a.link:before {
+.link:before {
     content: '';
     background: #303030;
     display: block;
@@ -60,12 +55,12 @@ a.link:before {
     transition: all 0.3s ease-in-out;
 }
 
-a.link:hover {
+.link:hover {
     background-position: 0;
     font-weight: 700;
 
 }
 
-a.link:hover::before {
+.link:hover::before {
     width: 100%;
 }
