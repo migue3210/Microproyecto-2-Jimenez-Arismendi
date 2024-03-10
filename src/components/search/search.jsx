@@ -38,13 +38,3 @@ export default function Search() {
 
     );
 }
-
-function GameCard() {
-    return (
-        <>
-            <div className='game-card'>
-                <strong>Nombre del Juego</strong>
-            </div>
-        </>
-    );
-}

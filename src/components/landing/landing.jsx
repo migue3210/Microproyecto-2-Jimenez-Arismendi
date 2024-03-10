@@ -1,4 +1,6 @@
-import { useState } from 'react';
+/* eslint-disable react/jsx-key */
+import { useState, useEffect } from 'react';
+import { getDocs, collection } from 'firebase/firestore';
 import './landing.css'
 import Header from '../header/header'
 import { db } from '../../services/firebase';
@@ -18,18 +20,34 @@ export default function Landing() {
         })
     }
 
+    const [val, setVal] = useState([]);
+    const value = collection(db, 'games');
+    useEffect(() => {
+        const getData = async () => {
+            const dbVal = await getDocs(value)
+            setVal(dbVal.docs.map(doc => ({ ...doc.data(), id: doc.id })))
+        }
+        getData()
+    })
+
     return (
         <>
             <Header></Header>
             <div className='club-list'>
                 {
                     info.map((data) => (
-                        // eslint-disable-next-line react/jsx-key
-                        <ClubCard
-                            name={data.nombre}
-                            description={data.descripcion}
-                            games={data.videojuegos}
-                        />
+                        <div className='card-container'>
+                            <h3>{data.nombre}</h3>
+                            <p>{data.descripcion}</p>
+                            <h4 className='games-title'>Juegos</h4>
+                            {val.map(values => (
+                                data.videojuegos.map(games => (
+                                    games == values.id
+                                        ? <p>{values.titulo}</p>
+                                        : null
+                                ))
+                            ))}
+                        </div>
                     ))
                 }
             </div>
@@ -38,15 +56,3 @@ export default function Landing() {
     );
 }
 
-const ClubCard
-    // eslint-disable-next-line react/prop-types
-    = ({ name, description, games }) => {
-        return (
-            <div className='card-container'>
-                <h3>{name}</h3>
-                <p>{description}</p>
-                <h4 className='games-title'>Juegos</h4>
-                <p>{games}</p>
-            </div>
-        );
-    }
