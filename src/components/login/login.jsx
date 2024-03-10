@@ -36,6 +36,7 @@ export default function Login() {
           <label>
             Correo Electrónico:
             <input
+              className='login-input'
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -45,6 +46,7 @@ export default function Login() {
           <label>
             Contraseña:
             <input
+              className='login-input'
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}

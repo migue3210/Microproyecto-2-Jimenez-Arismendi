@@ -1,201 +1,198 @@
 .Register {
-    display: flex;
-    height: 100vh;
-    background-color: #f4f4f4;
-  }
-  
-  .left-half {
-    width: 50%;
-    background-color: #1F66B9;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .login-container {
-    width: 600px;
-    padding: 20px;
-    text-align: left;
-    margin-left: 90px;
-    margin-top: 70px;
-  }
-  
-  h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
+  display: flex;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
 
-  form {
-    width: 600px;
-    height: 400px;
-    position: absolute;
-    left: 800px;
-    top: 180px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 50px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 8px;
-  }
-  
-  .welcome {
-    color: #fff; 
-    font-size: 50px; 
-    margin-top: 20px; 
-    position: absolute;
-    left: 250px;
-    top: 200px;
-  }
-  
-  .Game {
-    color: #fff; 
-    font-size: 50px; 
-    margin-top: 20px; 
-    position: absolute;
-    left: 260px;
-    top: 400px;
-  }
+.left-half {
+  width: 50%;
+  background-color: #1F66B9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  .fondo-imagen {
-    margin-top: 20px; 
-    position: absolute;
-    left: 320px;
-    top: 280px;
-  }
+.login-container {
+  width: 600px;
+  padding: 20px;
+  text-align: left;
+  margin-left: 90px;
+  margin-top: 70px;
+}
 
-  .name {
-    position: absolute;
-    left: 50px;
-    top: 30px;
-  }
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
 
-  .input-name {
-    width: 40%;
-    padding: 8px;
-    margin-bottom: 6px;
-    box-sizing: border-box;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
+form {
+  width: 600px;
+  height: 400px;
+  position: absolute;
+  left: 800px;
+  top: 180px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 50px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
+label {
+  display: block;
+  margin-bottom: 8px;
+}
 
-  .apellido{
-    position: absolute;
-    left: 410px;
-    top: 30px;
-  }
+.welcome {
+  color: #fff;
+  font-size: 50px;
+  margin-top: 20px;
+  position: absolute;
+  left: 250px;
+  top: 200px;
+}
 
-  .input-apellido {
-    width: 40%;
-    padding: 8px;
-    float: right;
-    margin-bottom: 6px;
-    box-sizing: border-box;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
+.Game {
+  color: #fff;
+  font-size: 50px;
+  margin-top: 20px;
+  position: absolute;
+  left: 260px;
+  top: 400px;
+}
 
-  .usuario{
-    position: absolute;
-    left: 50px;
-    top: 100px;
-  }
+.fondo-imagen {
+  margin-top: 20px;
+  position: absolute;
+  left: 320px;
+  top: 280px;
+}
 
-  .input-usuario {
-    width: 34%;
-    padding: 8px;
-    position: absolute;
-    left: 50px;
-    top:120px;
-    margin-bottom: 6px;
-    box-sizing: border-box;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
+.name {
+  position: absolute;
+  left: 50px;
+  top: 30px;
+}
 
-  .game{
-    position: absolute;
-    left: 410px;
-    top: 100px;
-  }
-
-  .input-game {
-    width: 35%;
-    padding: 8px;
-    position: absolute;
-    left: 410px;
-    top: 120px;
-    margin-bottom: 6px;
-    box-sizing: border-box;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
+.input-name {
+  width: 40%;
+  padding: 8px;
+  margin-bottom: 6px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
 
 
+.apellido {
+  position: absolute;
+  left: 410px;
+  top: 30px;
+}
 
-  .input-email {
-    width: 87%;
-    padding: 8px;
-    position: absolute;
-    top: 170px;
-    left: 40px;
-    margin-bottom: 6px;
+.input-apellido {
+  width: 40%;
+  padding: 8px;
+  float: right;
+  margin-bottom: 6px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
 
-  }
+.usuario {
+  position: absolute;
+  left: 50px;
+  top: 100px;
+}
 
-  .input-password {
-    width: 87%;
-    padding: 8px;
-    position: absolute;
-    top: 240px;
-    left: 40px;
-    margin-bottom: 6px;
+.input-usuario {
+  width: 34%;
+  padding: 8px;
+  position: absolute;
+  left: 50px;
+  top: 120px;
+  margin-bottom: 6px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
 
-  }
-  
+.game {
+  position: absolute;
+  left: 410px;
+  top: 100px;
+}
 
-  .signIn {
-    color: #69727c;
-    font: 10px;
-    position: absolute;
-    top: 400px;
-    left: 48px;
-  }
-
-  .button-register {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    position: absolute;
-    top: 330px;
-    left: 48px;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-
-  .button-signIn {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    position: absolute;
-    top: 430px;
-    left: 48px;
-  }
+.input-game {
+  width: 35%;
+  padding: 8px;
+  position: absolute;
+  left: 410px;
+  top: 120px;
+  margin-bottom: 6px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
 
 
-  
+
+.input-email {
+  width: 87%;
+  padding: 8px;
+  position: absolute;
+  top: 170px;
+  left: 40px;
+  margin-bottom: 6px;
+
+}
+
+.input-password {
+  width: 87%;
+  padding: 8px;
+  position: absolute;
+  top: 240px;
+  left: 40px;
+  margin-bottom: 6px;
+
+}
+
+
+.signIn {
+  color: #69727c;
+  font: 10px;
+  position: absolute;
+  top: 400px;
+  left: 48px;
+}
+
+.button-register {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  position: absolute;
+  top: 330px;
+  left: 48px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.button-signIn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  position: absolute;
+  top: 430px;
+  left: 48px;
+}

@@ -7,6 +7,7 @@ import './App.css'
 import Landing from './components/landing/landing'
 import Login from './components/login/login'
 import Register from './components/register/register'
+import Search from "./components/search/search";
 
 
 function App() {
@@ -28,6 +29,11 @@ function App() {
             exact
             path="/inicio"
             element={<Landing />}
+          ></Route>
+          <Route
+            exact
+            path="/buscar-juego"
+            element={<Search />}
           ></Route>
         </Routes>
       </Router>
