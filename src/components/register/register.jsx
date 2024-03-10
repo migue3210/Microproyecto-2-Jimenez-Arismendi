@@ -5,8 +5,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../services/firebase';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../../services/firebase';
-
-
+import { useNavigate } from 'react-router-dom';
 
 export default function Register() {
   const [name, setName] = useState('');
@@ -69,6 +68,12 @@ export default function Register() {
     setSeleccion(e.target.value);
   };
 
+
+  let navigate = useNavigate();
+
+  function signIn(){
+    navigate('/')
+  }
 
 
   return (
@@ -146,7 +151,7 @@ export default function Register() {
           <label className='signIn'>
             ¿Ya tienes cuenta?
           </label>
-          <button className='button-signIn'>Iniciar sesión</button>
+          <button type="button" className='button-signIn' onClick={signIn}>Iniciar sesión</button>
 
         </form>
       </div>
