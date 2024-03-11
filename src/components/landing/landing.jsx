@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/jsx-key */
 import { useState, useEffect } from 'react';
 import { getDocs, collection } from 'firebase/firestore';
@@ -21,14 +22,23 @@ export default function Landing() {
     }
 
     const [val, setVal] = useState([]);
-    const value = collection(db, 'games');
+
+    const fetchPost = async () => {
+
+        await getDocs(collection(db, "games"))
+            .then((querySnapshot) => {
+                const newData = querySnapshot.docs
+                    .map((doc) => ({ ...doc.data(), id: doc.id }));
+                setVal(newData);
+                console.log(val, newData);
+            })
+
+    }
+
     useEffect(() => {
-        const getData = async () => {
-            const dbVal = await getDocs(value)
-            setVal(dbVal.docs.map(doc => ({ ...doc.data(), id: doc.id })))
-        }
-        getData()
-    })
+        fetchPost();
+    }, [])
+
 
     return (
         <>
