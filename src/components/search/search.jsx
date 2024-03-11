@@ -10,6 +10,8 @@ import { getDocs, collection } from 'firebase/firestore';
 
 export default function Search() {
     const [val, setVal] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [searchResults, setSearchResults] = useState([]);
 
     const fetchPost = async () => {
 
@@ -18,14 +20,35 @@ export default function Search() {
                 const newData = querySnapshot.docs
                     .map((doc) => ({ ...doc.data(), id: doc.id }));
                 setVal(newData);
-                console.log(val, newData);
+                setSearchResults(newData);
             })
 
     }
 
+    const handleSearch = async () => {
+        try {
+            if (searchTerm.trim() === '') {
+                setSearchResults(val);
+            } else {
+                const querySnapshot = await db
+                    .collection('games')
+                    .where('titulo', '>=', searchTerm)
+                    .where('titulo', '<=', searchTerm + '\uf8ff')
+                    .get();
+
+                const results = querySnapshot.docs.map((doc) => doc.data());
+                setSearchResults(results);
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+
     useEffect(() => {
         fetchPost();
     }, [])
+
+
 
     return (
         <>
@@ -33,14 +56,25 @@ export default function Search() {
             <div className='search-container'>
                 <div className='browser'>
                     <img className='search-icon' src={search_icon} alt="search icon" />
-                    <input id='search-input' type='text' placeholder='Buscar...' />
+                    <input
+                        id='search-input'
+                        type='text' placeholder='Buscar...'
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        onKeyDown={(e) => {
+                            if (e.key === "Enter")
+                                handleSearch();
+                        }}
+                    />
                 </div>
                 <div className='game-cards-container'>
-                    {val.map(values => (
-                        <div className='game-card'>
-                            <strong>{values.titulo}</strong>
-                        </div>
-                    ))}
+                    {
+                        searchResults.map((game) => (
+                            <div className='game-card'>
+                                <strong key={game.id}>{game.titulo}</strong>
+                            </div>
+                        ))
+                    }
                 </div>
 
             </div>
