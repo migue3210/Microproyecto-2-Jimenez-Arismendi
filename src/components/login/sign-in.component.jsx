@@ -12,7 +12,6 @@ const googleSignIn = () => {
       
             // Verifica si el inicio de sesión fue exitoso
             if (response) {
-              // Redirige a la página deseada
               navigate('/inicio'); 
             }
           } catch (error) {

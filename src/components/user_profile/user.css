@@ -1,8 +1,9 @@
 .user-profile-container {
-  max-width: 400px;
-  position: absolute;
-  top: 160px;
-  left: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
   margin: 0 auto;
   padding: 20px;
   border: 1px solid #ccc;

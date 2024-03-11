@@ -8,7 +8,7 @@ import Landing from './components/landing/landing'
 import Login from './components/login/login'
 import Register from './components/register/register'
 import Search from "./components/search/search";
-import User from "./components/user_profile/user";
+import UserProfile from "./components/user_profile/user";
 import ClubDetails from "./components/club-details/club-details";
 
 
@@ -39,8 +39,8 @@ function App() {
           ></Route>
           <Route
             exact
-            path="/perfil"
-            element={<User />}
+            path="/perfil/:uid"
+            element={<UserProfile/>}
           ></Route>
           <Route path="/detalles-club/:id" element={<ClubDetails />} />
         </Routes>

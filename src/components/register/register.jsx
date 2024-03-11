@@ -21,25 +21,32 @@ export default function Register() {
 
   const signUp = (e) => {
     e.preventDefault();
-    createUserWithEmailAndPassword(auth, email, password, name, apellido, usuario, game)
+    createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log(userCredential);
+
+        const enviar = {
+          nombre: name,
+          apellido: apellido,
+          usuario: usuario,
+          juego_favorito: game,
+          correo: email,
+          contrasena: password
+        };
+
+        const datos = collection(db, "usuarios");
+        addDoc(datos, enviar).then(() =>{
+          navigate('/inicio');
+        }).catch((error) => {
+          console.error("Error al escribir en Firestore: ", error);
+        });
+        
       })
       .catch((error) => {
         console.log(error);
       });
 
-    const enviar = {
-      nombre: name,
-      apellido: apellido,
-      usuario: usuario,
-      juego_favorito: game,
-      correo: email,
-      contrasena: password
-    }
 
-    const datos = collection(db, "usuarios")
-    addDoc(datos, enviar)
   };
 
 
@@ -92,9 +99,6 @@ export default function Register() {
     navigate('/')
   }
 
-  function enter() {
-    navigate('/inicio')
-  }
 
 
   return (
@@ -204,7 +208,7 @@ export default function Register() {
           <section className='register-buttons'>
             {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-            <button type="submit" className='button-register' disabled={!isFormValid} onClick={enter}>Registrarse</button>
+            <button type="submit" className='button-register' disabled={!isFormValid}>Registrarse</button>
             <label className='signIn'>
               <br />
               ¿Ya tienes cuenta?
