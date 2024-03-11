@@ -9,6 +9,7 @@ import Login from './components/login/login'
 import Register from './components/register/register'
 import Search from "./components/search/search";
 import User from "./components/user_profile/user";
+import ClubDetails from "./components/club-details/club-details";
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
             path="/perfil"
             element={<User />}
           ></Route>
+          <Route path="/detalles-club/:id" element={<ClubDetails />} />
         </Routes>
       </Router>
     </>
