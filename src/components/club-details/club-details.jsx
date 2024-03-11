@@ -77,6 +77,9 @@ export default function ClubDetails() {
                     }
                 </div>
 
+                <button id='subscribe'>Suscribirme</button>
+                <button id='unsubscribe'>Retirarme</button>
+
             </div>
         </>
 
