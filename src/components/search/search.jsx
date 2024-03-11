@@ -70,8 +70,10 @@ export default function Search() {
                 <div className='game-cards-container'>
                     {
                         searchResults.map((game) => (
-                            <div className='game-card'>
-                                <strong key={game.id}>{game.titulo}</strong>
+                            <div className='game-card' key={game.id}>
+                                <strong >{game.titulo}</strong>
+                                <p>{game.descripcion}</p>
+                                <p className='game-gender'>{game.genero}</p>
                             </div>
                         ))
                     }

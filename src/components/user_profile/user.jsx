@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useAuth } from '../login/login'; 
+import { useState, useEffect } from 'react';
+import { useAuth } from '../login/login';
 import Header from '../header/header'
 import '../user_profile/user.css'
 
@@ -20,8 +20,8 @@ const UserProfile = () => {
         name: currentUser.name || '',
         apellido: currentUser.apellido || '',
         videojuegoPreferido: currentUser.juego_favorito || '',
-        email: currentUser.email || '', 
-        usuario: currentUser.usuario || '', 
+        email: currentUser.email || '',
+        usuario: currentUser.usuario || '',
       });
     }
   }, [currentUser]);
@@ -46,42 +46,42 @@ const UserProfile = () => {
 
   return (
     <>
-    <Header></Header>
-    <div className="user-profile-container">
-      <h2>Perfil de Usuario</h2>
-      <label>
-        Nombre:
-        <input type="text" name="nombre" value={userData.nombre} onChange={handleInputChange} />
-      </label>
-      <br />
-      <label>
-        Apellido:
-        <input type="text" name="apellido" value={userData.apellido} onChange={handleInputChange} />
-      </label>
-      <br />
-      <label>
-        Juego Favorito:
-        <input
-          type="text"
-          name="videojuegoPreferido"
-          value={userData.videojuegoPreferido}
-          onChange={handleInputChange}
-        />
-      </label>
-      <br />
-      <label>
-        Correo Electrónico:
-        <input type="text" name="correo" value={userData.email} disabled />
-      </label>
-      <br />
-      <label>
-        Username:
-        <input type="text" name="username" value={userData.usuario} disabled />
-      </label>
-      <br />
+      <Header></Header>
+      <div className="user-profile-container">
+        <h2>Perfil de Usuario</h2>
+        <label>
+          Nombre:
+          <input type="text" name="nombre" value={userData.nombre} onChange={handleInputChange} />
+        </label>
+        <br />
+        <label>
+          Apellido:
+          <input type="text" name="apellido" value={userData.apellido} onChange={handleInputChange} />
+        </label>
+        <br />
+        <label>
+          Juego Favorito:
+          <input
+            type="text"
+            name="videojuegoPreferido"
+            value={userData.videojuegoPreferido}
+            onChange={handleInputChange}
+          />
+        </label>
+        <br />
+        <label>
+          Correo Electrónico:
+          <input type="text" name="correo" value={userData.email} disabled />
+        </label>
+        <br />
+        <label>
+          Username:
+          <input type="text" name="username" value={userData.usuario} disabled />
+        </label>
+        <br />
 
-      <button onClick={handleSaveChanges}>Guardar Cambios</button>
-    </div>
+        <button onClick={handleSaveChanges}>Guardar Cambios</button>
+      </div>
 
     </>
   );

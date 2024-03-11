@@ -17,7 +17,7 @@ export default function Register() {
   const [isFormValid, setIsFormValid] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
-  
+
 
   const signUp = (e) => {
     e.preventDefault();
@@ -88,73 +88,88 @@ export default function Register() {
 
   let navigate = useNavigate();
 
-  function signIn(){
+  function signIn() {
     navigate('/')
   }
 
-  function enter(){
+  function enter() {
     navigate('/inicio')
   }
 
 
   return (
     <div className="Register">
-      <div className="left-half"></div>
+
+      <div className="left-half">
+        <h2>Welcome to</h2>
+        <img src={imagenFondo} alt="Fondo" />
+        <h2>GameClub</h2>
+      </div>
+
       <div className="login-container">
+
         <h2>Registrarse</h2>
-        { }
-        <p className="welcome">Welcome to</p>
-        <img src={imagenFondo} alt="Fondo" className="fondo-imagen" />
-        <p className="Game">GameClub</p>
+        <form className='entry-form' onSubmit={signUp}>
 
-        <form onSubmit={signUp}>
-          <label className='name'>
-            Nombre
-          </label>
-          <input
-            type="name"
-            className='input-name'
-            value={name}
-            onChange={(e) => {
-            setName(e.target.value);
-            validateForm();
-            }}
-          />
+          <div className='row'>
+            <div className='textfield-container'>
+              <label className='name'>
+                Nombre
+              </label>
+              <input
+                type="name"
+                className='input-name'
+                value={name}
+                onChange={(e) => {
+                  setName(e.target.value);
+                  validateForm();
+                }}
+              />
+            </div>
 
-          <label className='apellido'>
-            Apellido
-          </label>
-          <input
-            type="apellido"
-            className='input-apellido'
-            value={apellido}
-            onChange={(e) => {
-              setApellido(e.target.value);
-              validateForm();
-            }}
-          />
+            <div className='textfield-container'>
+              <label className='apellido'>
+                Apellido
+              </label>
+              <input
+                type="apellido"
+                className='input-apellido'
+                value={apellido}
+                onChange={(e) => {
+                  setApellido(e.target.value);
+                  validateForm();
+                }}
+              />
+            </div>
+          </div>
 
-          <label className='usuario'>
-            Nombre de usuario
-          </label>
-          <input
-            type="usuario"
-            className='input-usuario'
-            value={usuario}
-            onChange={(e) => {
-              setUsuario(e.target.value)
-              validateForm();
-            }}
-          />
+          <div className='row'>
+            <div className='textfield-container'>
+              <label className='usuario'>
+                Nombre de usuario
+              </label>
+              <input
+                type="usuario"
+                className='input-usuario'
+                value={usuario}
+                onChange={(e) => {
+                  setUsuario(e.target.value)
+                  validateForm();
+                }}
+              />
+            </div>
 
-          <label className='game'>
-            Juego favorito
-          </label>
-          <select className='select-game' value={game} onChange={handleChange}>
-        {juegos.map((juego, index) => (
-          <option key={index} value={juego}>{juego}</option>
-        ))}
-      </select>
+            <div className='textfield-container'>
+              <label className='game'>
+                Juego favorito
+              </label>
+              <select className='select-game' value={game} onChange={handleChange}>
+                {juegos.map((juego, index) => (
+                  <option key={index} value={juego}>{juego}</option>
+                ))}
+              </select>
+            </div>
+          </div>
 
           <label className='email'>
             Correo Electrónico
@@ -162,15 +177,18 @@ export default function Register() {
               type="email"
               className='input-email'
               value={email}
-              onChange={(e) =>{ 
+              onChange={(e) => {
                 setEmail(e.target.value)
                 validateForm();
-            }}
+              }}
             />
           </label>
           <br />
-          <label className='password' >
-            Contraseña
+
+          <div className='textfield-container'>
+            <label className='password' >
+              Contraseña
+            </label>
             <input
               type="password"
               className='input-password'
@@ -178,19 +196,22 @@ export default function Register() {
               onChange={(e) => {
                 setPassword(e.target.value)
                 validateForm();
-            }}
-              
+              }}
+
             />
-          </label>
-          <br />
-          <button type="submit" className='button-register' disabled={!isFormValid} onClick={enter}>Registrarse</button>
+          </div>
 
-          {errorMessage && <p className="error-message">{errorMessage}</p>}
+          <section className='register-buttons'>
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-          <label className='signIn'>
-            ¿Ya tienes cuenta?
-          </label>
-          <button type="button" className='button-signIn' onClick={signIn}>Iniciar sesión</button>
+            <button type="submit" className='button-register' disabled={!isFormValid} onClick={enter}>Registrarse</button>
+            <label className='signIn'>
+              <br />
+              ¿Ya tienes cuenta?
+            </label>
+            <button type="button" className='button-signIn' onClick={signIn}>Iniciar sesión</button>
+          </section>
+
 
         </form>
       </div>
