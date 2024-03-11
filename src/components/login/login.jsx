@@ -26,23 +26,25 @@ export default function Login() {
         setError('Correo electrónico o contraseña incorrectos');
         console.error(error);
       });
-    }
+  }
 
-  function registrarse(){
+  function registrarse() {
     navigate('/registro')
   }
 
   return (
     <div className="Login">
-      <div className="left-half"></div>
+
+      <div className="left-half">
+        <h2>Welcome to</h2>
+        <img src={imagenFondo} alt="Fondo" className="game-image" />
+        <h2 >GameClub</h2>
+      </div>
+
       <div className="login-container">
         <h2>Inicio de Sesión</h2>
-        { }
-        <p className="welcome">Welcome to</p>
-        <img src={imagenFondo} alt="Fondo" className="fondo-imagen" />
-        <p className="Game">GameClub</p>
-        
-        <form onSubmit={signIn}>
+        <form className='entry-form' onSubmit={signIn}>
+
           <label>
             Correo Electrónico:
             <input
@@ -53,6 +55,7 @@ export default function Login() {
             />
           </label>
           <br />
+
           <label>
             Contraseña:
             <input
@@ -62,14 +65,21 @@ export default function Login() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </label>
-          <br />
-          <button type="submit">Iniciar sesión</button>
-          <SignIn></SignIn>
-          <label className='signUp'>
-            ¿No tienes cuenta?
-          </label>
-          <button type="button" className='button-signUp' onClick={registrarse}>Registrarse</button>
           {error && <p className="error-message">{error}</p>}
+
+          <br />
+
+          <section className='login-buttons'>
+            <button type="submit">Iniciar sesión</button>
+            <SignIn></SignIn>
+          </section>
+
+          <section className='register-section'>
+            <label className='signUp'>
+              ¿No tienes cuenta?
+            </label>
+            <button type="button" className='button-signUp' onClick={registrarse}>Registrarse</button>
+          </section>
         </form>
       </div>
     </div>
