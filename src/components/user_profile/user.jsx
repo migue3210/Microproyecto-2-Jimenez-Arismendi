@@ -1,39 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../login/login'; 
 import Header from '../header/header'
+import '../user_profile/user.css'
 
 
 const UserProfile = () => {
-  const { currentUser, updateProfileData } = useAuth(); // Asegúrate de tener una función para obtener el usuario actual y actualizar el perfil en tu contexto de autenticación
+  const { currentUser } = useAuth();
   const [userData, setUserData] = useState({
     nombre: '',
     apellido: '',
     videojuegoPreferido: '',
+    correo: '',
+    username: '',
   });
 
   useEffect(() => {
-    // Cargar datos del usuario al montar el componente
     if (currentUser) {
       setUserData({
-        nombre: currentUser.nombre || '',
+        name: currentUser.name || '',
         apellido: currentUser.apellido || '',
-        videojuegoPreferido: currentUser.videojuegoPreferido || '',
+        videojuegoPreferido: currentUser.juego_favorito || '',
+        email: currentUser.email || '', 
+        usuario: currentUser.usuario || '', 
       });
     }
   }, [currentUser]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setUserData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    setUserData((prevData) => ({ ...prevData, [name]: value }));
   };
 
   const handleSaveChanges = async () => {
     try {
-      // Llama a la función para actualizar el perfil en Firebase
-      await updateProfileData(userData);
+      await updateProfile(currentUser, {
+        displayName: `${userData.nombre} ${userData.apellido}`,
+        customField: userData.videojuegoPreferido,
+        // Add more fields as needed
+      });
       console.log('Perfil actualizado con éxito');
     } catch (error) {
       console.error('Error al actualizar el perfil:', error);
@@ -41,8 +45,9 @@ const UserProfile = () => {
   };
 
   return (
-    <div>
-      <Header></Header>
+    <>
+    <Header></Header>
+    <div className="user-profile-container">
       <h2>Perfil de Usuario</h2>
       <label>
         Nombre:
@@ -55,12 +60,30 @@ const UserProfile = () => {
       </label>
       <br />
       <label>
-        Videojuego Preferido:
-        <input type="text" name="videojuegoPreferido" value={userData.videojuegoPreferido} onChange={handleInputChange} />
+        Juego Favorito:
+        <input
+          type="text"
+          name="videojuegoPreferido"
+          value={userData.videojuegoPreferido}
+          onChange={handleInputChange}
+        />
       </label>
       <br />
+      <label>
+        Correo Electrónico:
+        <input type="text" name="correo" value={userData.email} disabled />
+      </label>
+      <br />
+      <label>
+        Username:
+        <input type="text" name="username" value={userData.usuario} disabled />
+      </label>
+      <br />
+
       <button onClick={handleSaveChanges}>Guardar Cambios</button>
     </div>
+
+    </>
   );
 };
 
