@@ -1,48 +1,67 @@
-import './user.css';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { getDatabase, ref, get } from 'firebase/database';
-import { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useAuth } from '../login/login'; 
+import Header from '../header/header'
 
 
-export default function User () {
+const UserProfile = () => {
+  const { currentUser, updateProfileData } = useAuth(); // Asegúrate de tener una función para obtener el usuario actual y actualizar el perfil en tu contexto de autenticación
+  const [userData, setUserData] = useState({
+    nombre: '',
+    apellido: '',
+    videojuegoPreferido: '',
+  });
 
-    const [userData, setUserData] = useState(null);
-  
-    useEffect(() => {
-      const auth = getAuth();
-      const db = getDatabase();
-  
-      const unsubscribe = onAuthStateChanged(auth, (user) => {
-        if (user) {
-          const userRef = ref(db, `usuarios/${user.uid}`);
-  
-          get(userRef)
-            .then((snapshot) => {
-              const data = snapshot.val();
-              setUserData(data);
-            })
-            .catch((error) => {
-              console.error('Error al obtener datos del usuario:', error);
-            });
-        }
+  useEffect(() => {
+    // Cargar datos del usuario al montar el componente
+    if (currentUser) {
+      setUserData({
+        nombre: currentUser.nombre || '',
+        apellido: currentUser.apellido || '',
+        videojuegoPreferido: currentUser.videojuegoPreferido || '',
       });
-  
-      return () => unsubscribe();
-    }, []);
-  
-    return (
-      <div className="perfil-container">
-        {userData && (
-          <div className="perfil-card">
-            <h2>Perfil de Usuario</h2>
-            <p><strong>Nombre:</strong> {userData.nombre}</p>
-            <p><strong>Apellido:</strong> {userData.apellido}</p>
-            <p><strong>Nombre de Usuario:</strong> {userData.username}</p>
-            <p><strong>Email:</strong> {userData.email}</p>
-            <p><strong>Contraseña:</strong> ************</p>
-            <p><strong>Videojuego Preferido:</strong> {userData.videojuego}</p>
-          </div>
-        )}
-      </div>
-    );
+    }
+  }, [currentUser]);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setUserData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
+
+  const handleSaveChanges = async () => {
+    try {
+      // Llama a la función para actualizar el perfil en Firebase
+      await updateProfileData(userData);
+      console.log('Perfil actualizado con éxito');
+    } catch (error) {
+      console.error('Error al actualizar el perfil:', error);
+    }
+  };
+
+  return (
+    <div>
+      <Header></Header>
+      <h2>Perfil de Usuario</h2>
+      <label>
+        Nombre:
+        <input type="text" name="nombre" value={userData.nombre} onChange={handleInputChange} />
+      </label>
+      <br />
+      <label>
+        Apellido:
+        <input type="text" name="apellido" value={userData.apellido} onChange={handleInputChange} />
+      </label>
+      <br />
+      <label>
+        Videojuego Preferido:
+        <input type="text" name="videojuegoPreferido" value={userData.videojuegoPreferido} onChange={handleInputChange} />
+      </label>
+      <br />
+      <button onClick={handleSaveChanges}>Guardar Cambios</button>
+    </div>
+  );
+};
+
+export default UserProfile;

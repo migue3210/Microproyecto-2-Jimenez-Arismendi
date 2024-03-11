@@ -2,10 +2,10 @@ import { signInWithGooglePopup } from "../../services/firebase.util"
 import {GoogleButton} from 'react-google-button';
 import { useNavigate } from 'react-router-dom';
 
-const SignIn = () => {
+const googleSignIn = () => {
     const navigate = useNavigate();
 
-    const handleGoogleSignIn = async () => {
+    const googleSignIn = async () => {
         try {
             const response = await signInWithGooglePopup();
             console.log(response);
@@ -23,10 +23,10 @@ const SignIn = () => {
     return (
             
           <div className='google'>
-          <GoogleButton onClick={handleGoogleSignIn}/>
+          <GoogleButton onClick={googleSignIn}/>
           </div>
         )
     }
 
 
-    export default SignIn;
+    export default googleSignIn;

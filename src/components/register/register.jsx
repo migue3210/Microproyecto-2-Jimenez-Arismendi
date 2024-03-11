@@ -119,7 +119,7 @@ export default function Register() {
           <label className='game'>
             Juego favorito
           </label>
-          <select className='select-game' value={seleccion} onChange={handleChange}>
+          <select className='select-game' value={game} onChange={handleChange}>
         {juegos.map((juego, index) => (
           <option key={index} value={juego}>{juego}</option>
         ))}
