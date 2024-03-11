@@ -1,0 +1,14 @@
+.club-details-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 35px;
+}
+
+.game-gender {
+    font-size: 14px;
+    font-weight: 700;
+    opacity: 0.8;
+    color: #3c3c3c;
+}
