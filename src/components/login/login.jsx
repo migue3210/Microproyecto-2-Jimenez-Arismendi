@@ -1,10 +1,11 @@
 import './login.css'
-import { useState } from 'react';
 import imagenFondo from '../../assets/icons8-gameboy-96.png';
 import { auth } from '../../services/firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import SignIn from './sign-in.component';
+import { useState, useEffect } from 'react';
+import { onAuthStateChanged } from 'firebase/auth';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -13,7 +14,7 @@ export default function Login() {
   const [error, setError] = useState(null);
 
 
-  
+
   const signIn = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
@@ -74,3 +75,21 @@ export default function Login() {
     </div>
   );
 }
+
+export const useAuth = () => {
+  const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    // Escucha cambios en la autenticación
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user);
+    });
+
+    // Detiene la escucha cuando el componente se desmonta
+    return () => unsubscribe();
+  }, []);
+
+  return {
+    currentUser,
+  };
+};

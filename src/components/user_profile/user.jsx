@@ -1,48 +1,90 @@
-import './user.css';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { getDatabase, ref, get } from 'firebase/database';
-import { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useAuth } from '../login/login'; 
+import Header from '../header/header'
+import '../user_profile/user.css'
 
 
-export default function User () {
+const UserProfile = () => {
+  const { currentUser } = useAuth();
+  const [userData, setUserData] = useState({
+    nombre: '',
+    apellido: '',
+    videojuegoPreferido: '',
+    correo: '',
+    username: '',
+  });
 
-    const [userData, setUserData] = useState(null);
-  
-    useEffect(() => {
-      const auth = getAuth();
-      const db = getDatabase();
-  
-      const unsubscribe = onAuthStateChanged(auth, (user) => {
-        if (user) {
-          const userRef = ref(db, `usuarios/${user.uid}`);
-  
-          get(userRef)
-            .then((snapshot) => {
-              const data = snapshot.val();
-              setUserData(data);
-            })
-            .catch((error) => {
-              console.error('Error al obtener datos del usuario:', error);
-            });
-        }
+  useEffect(() => {
+    if (currentUser) {
+      setUserData({
+        name: currentUser.name || '',
+        apellido: currentUser.apellido || '',
+        videojuegoPreferido: currentUser.juego_favorito || '',
+        email: currentUser.email || '', 
+        usuario: currentUser.usuario || '', 
       });
-  
-      return () => unsubscribe();
-    }, []);
-  
-    return (
-      <div className="perfil-container">
-        {userData && (
-          <div className="perfil-card">
-            <h2>Perfil de Usuario</h2>
-            <p><strong>Nombre:</strong> {userData.nombre}</p>
-            <p><strong>Apellido:</strong> {userData.apellido}</p>
-            <p><strong>Nombre de Usuario:</strong> {userData.username}</p>
-            <p><strong>Email:</strong> {userData.email}</p>
-            <p><strong>Contraseña:</strong> ************</p>
-            <p><strong>Videojuego Preferido:</strong> {userData.videojuego}</p>
-          </div>
-        )}
-      </div>
-    );
+    }
+  }, [currentUser]);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setUserData((prevData) => ({ ...prevData, [name]: value }));
   };
+
+  const handleSaveChanges = async () => {
+    try {
+      await updateProfile(currentUser, {
+        displayName: `${userData.nombre} ${userData.apellido}`,
+        customField: userData.videojuegoPreferido,
+        // Add more fields as needed
+      });
+      console.log('Perfil actualizado con éxito');
+    } catch (error) {
+      console.error('Error al actualizar el perfil:', error);
+    }
+  };
+
+  return (
+    <>
+    <Header></Header>
+    <div className="user-profile-container">
+      <h2>Perfil de Usuario</h2>
+      <label>
+        Nombre:
+        <input type="text" name="nombre" value={userData.nombre} onChange={handleInputChange} />
+      </label>
+      <br />
+      <label>
+        Apellido:
+        <input type="text" name="apellido" value={userData.apellido} onChange={handleInputChange} />
+      </label>
+      <br />
+      <label>
+        Juego Favorito:
+        <input
+          type="text"
+          name="videojuegoPreferido"
+          value={userData.videojuegoPreferido}
+          onChange={handleInputChange}
+        />
+      </label>
+      <br />
+      <label>
+        Correo Electrónico:
+        <input type="text" name="correo" value={userData.email} disabled />
+      </label>
+      <br />
+      <label>
+        Username:
+        <input type="text" name="username" value={userData.usuario} disabled />
+      </label>
+      <br />
+
+      <button onClick={handleSaveChanges}>Guardar Cambios</button>
+    </div>
+
+    </>
+  );
+};
+
+export default UserProfile;

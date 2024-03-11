@@ -216,3 +216,9 @@ button:hover {
   top: 410px;
   left: 48px;
 }
+
+.error-message{
+  position: absolute;
+  top: 315px;
+  left: 250px;
+}
