@@ -1,8 +1,32 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/jsx-key */
 import './search.css';
 import Header from '../header/header';
 import search_icon from '../../assets/search_icon.svg';
+import { db } from '../../services/firebase';
+import { useEffect, useState } from 'react';
+import { getDocs, collection } from 'firebase/firestore';
+
 
 export default function Search() {
+    const [val, setVal] = useState([]);
+
+    const fetchPost = async () => {
+
+        await getDocs(collection(db, "games"))
+            .then((querySnapshot) => {
+                const newData = querySnapshot.docs
+                    .map((doc) => ({ ...doc.data(), id: doc.id }));
+                setVal(newData);
+                console.log(val, newData);
+            })
+
+    }
+
+    useEffect(() => {
+        fetchPost();
+    }, [])
+
     return (
         <>
             <Header></Header>
@@ -12,30 +36,15 @@ export default function Search() {
                     <input id='search-input' type='text' placeholder='Buscar...' />
                 </div>
                 <div className='game-cards-container'>
-                    <GameCard></GameCard>
-                    <GameCard></GameCard>
-                    <GameCard></GameCard>
-                    <GameCard></GameCard>
-                    <GameCard></GameCard>
-                    <GameCard></GameCard>
-                    <GameCard></GameCard>
-                    <GameCard></GameCard>
-                    <GameCard></GameCard>
-                    <GameCard></GameCard>
+                    {val.map(values => (
+                        <div className='game-card'>
+                            <strong>{values.titulo}</strong>
+                        </div>
+                    ))}
                 </div>
 
             </div>
         </>
 
-    );
-}
-
-function GameCard() {
-    return (
-        <>
-            <div className='game-card'>
-                <strong>Nombre del Juego</strong>
-            </div>
-        </>
     );
 }

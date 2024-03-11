@@ -3,7 +3,7 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import './App.css'
+import './App.css';
 import Landing from './components/landing/landing'
 import Login from './components/login/login'
 import Register from './components/register/register'

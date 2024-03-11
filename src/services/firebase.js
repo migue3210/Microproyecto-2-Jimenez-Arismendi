@@ -4,13 +4,12 @@ import 'firebase/compat/auth';
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyB2TaxkGBpzv8MRCcDKB6uKAoG4uVtfvfo",
-    authDomain: "microproyecto-2-a-j.firebaseapp.com",
-    projectId: "microproyecto-2-a-j",
-    storageBucket: "microproyecto-2-a-j.appspot.com",
-    messagingSenderId: "488798011933",
-    appId: "1:488798011933:web:8ac6086e6dc815263fbcf4",
-    measurementId: "G-YB824E1BQ1"
+    apiKey: "AIzaSyB5Jo3y4W9Ak82wpZciGCdcspf2mrkR9SA",
+    authDomain: "microproyecto-j-a.firebaseapp.com",
+    projectId: "microproyecto-j-a",
+    storageBucket: "microproyecto-j-a.appspot.com",
+    messagingSenderId: "48880280725",
+    appId: "1:48880280725:web:72ed4ad48a5a37de93a79c"
 };
 
 firebase.initializeApp(firebaseConfig);
