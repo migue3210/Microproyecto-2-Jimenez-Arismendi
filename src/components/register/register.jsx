@@ -32,6 +32,7 @@ export default function Register() {
           juego_favorito: game,
           correo: email,
           contrasena: password
+          
         };
 
         const datos = collection(db, "usuarios");
