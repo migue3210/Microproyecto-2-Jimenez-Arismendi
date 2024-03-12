@@ -48,9 +48,6 @@ export default function Search() {
         fetchPost();
     }, [])
 
-    const handleSignOut = () => {
-        signOut(auth).then(() => console.log("Sign Out")).catch((error) => console.log(error));
-    };
 
     return (
         <>
