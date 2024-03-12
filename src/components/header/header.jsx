@@ -10,7 +10,7 @@ export default function Header() {
                 <div className="nav">
                     <a className="link" href='/inicio'>Inicio</a >
                     <a className="link" href='/buscar-juego'>Buscar Juegos</a >
-                    <a href='/perfil/:uid'><img className="person-icon" src={person_icon} alt="perfil" /></a>
+                    <a href='/perfil'><img className="person-icon" src={person_icon} alt="perfil" /></a>
                 </div>
             </div>
         </>

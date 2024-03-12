@@ -7,7 +7,7 @@ import Header from '../header/header'
 import { db } from '../../services/firebase';
 import { Link } from 'react-router-dom';
 
-export default function Landing() {
+export default function Landing({user}) {
     const [info, setInfo] = useState([]);
     window.addEventListener('load', () => {
         Fetchdata();
@@ -38,6 +38,9 @@ export default function Landing() {
         fetchGames();
     }, [])
 
+    if(user){
+        return <Navigate to='/inicio'></Navigate>
+      }
 
     return (
         <>

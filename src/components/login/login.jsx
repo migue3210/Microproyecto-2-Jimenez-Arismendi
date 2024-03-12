@@ -2,12 +2,12 @@ import './login.css'
 import imagenFondo from '../../assets/icons8-gameboy-96.png';
 import { auth } from '../../services/firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import SignIn from './sign-in.component';
 import { useState, useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 
-export default function Login() {
+export default function Login({user}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -30,6 +30,10 @@ export default function Login() {
 
   function registrarse() {
     navigate('/registro')
+  }
+
+  if(user){
+    return <Navigate to='/inicio'></Navigate>
   }
 
   return (

@@ -2,12 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../login/login'; 
 import Header from '../header/header'
 import '../user_profile/user.css'
-import { db } from '../../services/firebase';
+import { db, auth } from '../../services/firebase';
 import { getDocs, collection, doc, updateDoc } from 'firebase/firestore';
 import { useParams } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
 
-const UserProfile = () => {
+
+const UserProfile = ( ) => {
   const { uid } = useParams();
   const { currentUser } = useAuth();
   const [userData, setUserData] = useState({
@@ -40,7 +43,7 @@ const UserProfile = () => {
       await getDocs(collection(db, "usuarios"))
           .then((querySnapshot) => {
               const newData = querySnapshot.docs
-                  .map((doc) => ({ ...doc.data(), id: doc.id }));
+                  .map((doc) => ({ ...doc.data(), uid: doc.iud }));
               setVal(newData);
           })
   }
@@ -66,6 +69,13 @@ const UserProfile = () => {
       console.log('Datos completos del usuario:', userData);
     }
   };
+
+  let navigate = useNavigate();
+
+  const handleSignOut = () => {
+    signOut(auth).then(() => console.log("Sign Out")).catch((error) => console.log(error));
+    navigate('/')
+  };  
 
   return (
     <>
@@ -104,6 +114,8 @@ const UserProfile = () => {
       <br />
 
       <button onClick={handleSaveChanges}>Guardar Cambios</button>
+      <button onClick={handleSignOut}>Sign Out</button>
+
     </div>
 
     </>

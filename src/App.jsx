@@ -11,8 +11,28 @@ import Search from "./components/search/search";
 import UserProfile from "./components/user_profile/user";
 import ClubDetails from "./components/club-details/club-details";
 
+import { ProtectedRouteInicio, ProtectedRoutePerfil, ProtectedRouteSearch } from "./components/ProtectedRoute";
+import {onAuthStateChanged} from "firebase/auth"
+import {useEffect, useState} from "react"
+import { auth } from "./services/firebase";
 
 function App() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+      const unsubscribe = onAuthStateChanged(auth, (user) => {
+        if(user) {
+          setUser(user);
+          return;
+        }
+
+        setUser(null);
+      });
+      return () => unsubscribe();
+  }, []);
+
+
+
   return (
     <>
       <Router>
@@ -20,29 +40,41 @@ function App() {
           <Route
             exact
             path="/"
-            element={<Login />}
+            element={<Login user={user}/>}
           ></Route>
           <Route
             exact
             path="/registro"
-            element={<Register />}
+            element={<Register user={user}/>}
           ></Route>
           <Route
             exact
             path="/inicio"
-            element={<Landing />}
+            element={
+              <ProtectedRouteInicio user={user}>
+                <Landing></Landing>
+              </ProtectedRouteInicio>
+            }
           ></Route>
           <Route
             exact
             path="/buscar-juego"
-            element={<Search />}
+            element={
+            <ProtectedRouteSearch user={user}>
+            <Search/>
+            </ProtectedRouteSearch>
+          }
           ></Route>
           <Route
             exact
-            path="/perfil/:uid"
-            element={<UserProfile/>}
+            path="/perfil"
+            element={
+            <ProtectedRoutePerfil user={user}>
+            <UserProfile/>
+            </ProtectedRoutePerfil>
+            }
           ></Route>
-          <Route path="/detalles-club/:id" element={<ClubDetails />} />
+          <Route path="/detalles-club/:id" element={<ClubDetails user={user}/>} />
         </Routes>
       </Router>
     </>
