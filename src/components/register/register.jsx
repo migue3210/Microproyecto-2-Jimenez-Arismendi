@@ -1,7 +1,7 @@
 import './register.css'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import imagenFondo from '../../assets/icons8-gameboy-96.png';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../services/firebase';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../../services/firebase';
